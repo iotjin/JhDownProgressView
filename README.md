@@ -1,7 +1,7 @@
 # JhDownProgressView
 JhDownProgressView - 自定义下载进度条(6种样式)
 
-![](https://gitee.com/iotjh/Picture/raw/master/progressView.gif)  <br> 
+![](http://gitee.com/iotjh/Picture/raw/master/progressView.gif)  <br> 
 
 ## Examples
 * Demo1
