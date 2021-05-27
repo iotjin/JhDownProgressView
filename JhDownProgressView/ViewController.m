@@ -61,7 +61,7 @@
 }
 
 - (void)creatControl {
-    JhDownProgressView *proress = [JhDownProgressView showWithStyle:JhStyle_percentAndText];
+    JhDownProgressView *proress = [JhDownProgressView showWithStyle:JhStylePercentAndText];
 //    JhDownProgressView *progressView = [JhDownProgressView showWithStyle:JhStyle_percentAndRing];
 //    JhDownProgressView *progressView = [JhDownProgressView showWithStyle:JhStyle_Ring];
 //    JhDownProgressView *progressView = [JhDownProgressView showWithStyle:JhStyle_Sector];
@@ -71,27 +71,27 @@
     _progressView = proress;
     
     JhDownProgressView *proress2 = [[JhDownProgressView alloc]initWithFrame:CGRectMake(20, 100, 150, 120)];
-    proress2.Jh_downProgressStyle = JhStyle_percentAndRing;
+    proress2.Jh_downProgressStyle = JhStylePercentAndRing;
     [self.view addSubview:proress2];
     _progressView2 = proress2;
     
     JhDownProgressView *proress3 = [[JhDownProgressView alloc]initWithFrame:CGRectMake(200, 100, 150, 120)];
-    proress3.Jh_downProgressStyle = JhStyle_Ring;
+    proress3.Jh_downProgressStyle = JhStyleRing;
     [self.view addSubview:proress3];
     _progressView3 = proress3;
     
     JhDownProgressView *proress4 = [[JhDownProgressView alloc]initWithFrame:CGRectMake(20, 600, 150, 120)];
-    proress4.Jh_downProgressStyle = JhStyle_Sector;
+    proress4.Jh_downProgressStyle = JhStyleSector;
     [self.view addSubview:proress4];
     _progressView4 = proress4;
     
     JhDownProgressView *proress5 = [[JhDownProgressView alloc]initWithFrame:CGRectMake(200, 300, 150, 15)];
-    proress5.Jh_downProgressStyle = JhStyle_Rectangle;
+    proress5.Jh_downProgressStyle = JhStyleRectangle;
     [self.view addSubview:proress5];
     _progressView5 = proress5;
     
     JhDownProgressView *proress6 = [[JhDownProgressView alloc]initWithFrame:CGRectMake(200, 600, 150, 120)];
-    proress6.Jh_downProgressStyle = JhStyle_ball;
+    proress6.Jh_downProgressStyle = JhStyleBall;
     [self.view addSubview:proress6];
     _progressView6 = proress6;
 }

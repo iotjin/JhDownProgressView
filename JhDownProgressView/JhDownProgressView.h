@@ -12,17 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, JhDownProgressStyle) {
     /** 百分百和文字 默认 */
-    JhStyle_percentAndText = 0,
+    JhStylePercentAndText = 0,
     /** 百分百和圆环 */
-    JhStyle_percentAndRing,
+    JhStylePercentAndRing,
     /** 圆环 */
-    JhStyle_Ring,
+    JhStyleRing,
     /** 扇形 */
-    JhStyle_Sector,
+    JhStyleSector,
     /** 长条形 */
-    JhStyle_Rectangle,
+    JhStyleRectangle,
     /** 球 */
-    JhStyle_ball,
+    JhStyleBall,
 };
 
 
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_END
 
 /**
 
- JhDownProgressView *progressView = [JhDownProgressView showWithStyle:JhStyle_percentAndText];
+ JhDownProgressView *progressView = [JhDownProgressView showWithStyle:JhStylepercentAndText];
  [self.view addSubview:progressView];
  
  CGFloat progressValue =  1.0 *progress.completedUnitCount/progress.totalUnitCount;

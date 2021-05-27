@@ -54,7 +54,7 @@
     self.backgroundColor =_Jh_progressViewBgColor;
     
     self.Jh_progressWidth = 5;
-    _Jh_downProgressStyle = JhStyle_percentAndText;
+    _Jh_downProgressStyle = JhStylePercentAndText;
 }
 
 #pragma mark - 弹出视图
@@ -69,7 +69,7 @@
 + (id)showWithStyle:(JhDownProgressStyle )viewStyle {
     CGFloat width = 150;
     CGFloat height = 120;
-    if (viewStyle == JhStyle_Rectangle) {
+    if (viewStyle == JhStyleRectangle) {
         width = 150;
         height = 15;
     }
@@ -85,54 +85,43 @@
 
 - (void)drawRect:(CGRect)rect {
     switch (_Jh_downProgressStyle) {
-            
-        case JhStyle_percentAndText:
+        case JhStylePercentAndText:
         {
-            [self JhStyle_percentAndText:rect];
+            [self JhStylepercentAndText:rect];
         }
             break;
-            
-        case JhStyle_percentAndRing:
+        case JhStylePercentAndRing:
         {
-            [self JhStyle_percentAndRing:rect];
-            
+            [self JhStylepercentAndRing:rect];
         }
             break;
-            
-        case JhStyle_Ring:
+        case JhStyleRing:
         {
-            [self JhStyle_Ring:rect];
+            [self JhStyleRing:rect];
         }
             break;
-            
-        case JhStyle_Sector:
+        case JhStyleSector:
         {
-            [self JhStyle_Sector:rect];
+            [self JhStyleSector:rect];
         }
             break;
-            
-        case JhStyle_Rectangle:
+        case JhStyleRectangle:
         {
             
         }
             break;
-            
-        case JhStyle_ball:
+        case JhStyleBall:
         {
-            [self JhStyle_ball:rect];
+            [self JhStyleball:rect];
         }
             break;
-            
         default:
             break;
     }
-    
 }
 
-
-
 #pragma mark - 百分百和文字 (默认)
-- (void)JhStyle_percentAndText:(CGRect)rect {
+- (void)JhStylepercentAndText:(CGRect)rect {
     //  x,y为圆点坐标，radius半径，startAngle为开始的弧度，endAngle为 结束的弧度，clockwise 0为顺时针，1为逆时针。
     // CGContextAddArc(<#CGContextRef  _Nullable c#>, <#CGFloat x#>, <#CGFloat y#>, <#CGFloat radius#>, <#CGFloat startAngle#>, <#CGFloat endAngle#>, <#int clockwise#>)
     
@@ -157,7 +146,7 @@
 }
 
 #pragma mark - 百分百和圆环
-- (void)JhStyle_percentAndRing:(CGRect)rect {
+- (void)JhStylepercentAndRing:(CGRect)rect {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGFloat xCenter = rect.size.width * 0.5;
     CGFloat yCenter = rect.size.height * 0.5;
@@ -177,9 +166,8 @@
     self.percentTextLabel.frame = CGRectMake(0, yCenter-10, FrameWidth, 20);
 }
 
-
 #pragma mark - 圆环
-- (void)JhStyle_Ring:(CGRect)rect {
+- (void)JhStyleRing:(CGRect)rect {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGFloat xCenter = rect.size.width * 0.5;
     CGFloat yCenter = rect.size.height * 0.5;
@@ -196,9 +184,8 @@
     CGContextStrokePath(ctx);
 }
 
-
 #pragma mark - 扇形
-- (void)JhStyle_Sector:(CGRect)rect {
+- (void)JhStyleSector:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGFloat xCenter = rect.size.width * 0.5;
     CGFloat yCenter = rect.size.height * 0.5;
@@ -222,7 +209,7 @@
 }
 
 #pragma mark - 球形
-- (void)JhStyle_ball:(CGRect)rect {
+- (void)JhStyleball:(CGRect)rect {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGFloat xCenter = rect.size.width * 0.5;
     CGFloat yCenter = rect.size.height * 0.5;
@@ -249,7 +236,6 @@
     CGFloat FrameWidth = self.bounds.size.width;
     self.percentTextLabel.frame = CGRectMake(0, yCenter-10, FrameWidth, 20);
 }
-
 
 #pragma mark - getters and setters
 - (UILabel *)percentTextLabel {
@@ -285,18 +271,18 @@
 
 - (void)setJh_progress:(CGFloat)Jh_progress {
     _Jh_progress = Jh_progress;
-    if (_Jh_downProgressStyle == JhStyle_percentAndText || _Jh_downProgressStyle == JhStyle_percentAndRing) {
+    if (_Jh_downProgressStyle == JhStylePercentAndText || _Jh_downProgressStyle == JhStylePercentAndRing) {
         self.percentTextLabel.text = [NSString stringWithFormat:@"%d%%", (int)floor(Jh_progress * 100)];
-    } else if (_Jh_downProgressStyle == JhStyle_Ring) {
+    } else if (_Jh_downProgressStyle == JhStyleRing) {
         
-    } else  if (_Jh_downProgressStyle == JhStyle_Sector) {
+    } else  if (_Jh_downProgressStyle == JhStyleSector) {
         
-    } else if (_Jh_downProgressStyle == JhStyle_Rectangle ){
+    } else if (_Jh_downProgressStyle == JhStyleRectangle ){
         CGFloat margin = KProgressBorderWidth + KProgressPadding;
         CGFloat maxWidth = self.bounds.size.width - margin * 2;
         CGFloat heigth = self.bounds.size.height - margin * 2;
         self.rectangleView.frame = CGRectMake(margin, margin, maxWidth * Jh_progress, heigth);
-    } else if (_Jh_downProgressStyle == JhStyle_ball) {
+    } else if (_Jh_downProgressStyle == JhStyleBall) {
         self.percentTextLabel.text = [NSString stringWithFormat:@"%d%%", (int)floor(Jh_progress * 100)];
     }
     if (_Jh_progress >= 1.0) {
@@ -322,41 +308,35 @@
 -(void)setJh_downProgressStyle:(JhDownProgressStyle)Jh_downProgressStyle {
     _Jh_downProgressStyle = Jh_downProgressStyle;
     switch (_Jh_downProgressStyle) {
-            
             /** 百分百和文字 默认 */
-        case JhStyle_percentAndText:
+        case JhStylePercentAndText:
         {
             [self percentTextLabel];
             [self textLabel];
         }
             break;
-            
             /** 百分百和圆环 */
-        case JhStyle_percentAndRing:
+        case JhStylePercentAndRing:
         {
             [self percentTextLabel];
         }
             break;
-            
             /** 圆环 */
-        case JhStyle_Ring:
+        case JhStyleRing:
         {
             
         }
             break;
-            
             /** 扇形 */
-        case JhStyle_Sector:
+        case JhStyleSector:
         {
             self.backgroundColor = JhColorAlpha(240, 240, 240, 0.9);
         }
             break;
-            
             /** 长方形 */
-        case JhStyle_Rectangle:
+        case JhStyleRectangle:
         {
             self.backgroundColor = JhColorAlpha(240, 240, 240, 0.9);
-            
             /********************************* 长条形样式 ********************************/
             //底部边框
             UIView *borderView = [[UIView alloc] initWithFrame:self.bounds];
@@ -365,7 +345,6 @@
             borderView.backgroundColor = _Jh_progressViewBgColor;
             borderView.layer.borderColor = [JhColorAlpha(240, 240, 240, 0.9) CGColor];
             borderView.layer.borderWidth = KProgressBorderWidth;
-            
             [self addSubview:borderView];
             //进度
             UIView *rectangleView = [[UIView alloc] init];
@@ -373,25 +352,20 @@
             rectangleView.layer.cornerRadius = (self.bounds.size.height - (KProgressBorderWidth + KProgressPadding) * 2) * 0.5;
             rectangleView.layer.masksToBounds = YES;
             [self addSubview:rectangleView];
-            
             self.rectangleView = rectangleView;
-            
             /********************************* 长条形样式 ********************************/
         }
             break;
-            
             /** 球 */
-        case JhStyle_ball:
+        case JhStyleBall:
         {
             [self percentTextLabel];
         }
             break;
-            
         default:
             break;
     }
     [self setNeedsDisplay];
-    
 }
 
 
